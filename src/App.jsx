@@ -1,5 +1,7 @@
+import MapComponent from "./components/Map"
+
 function App() {
-  return <div>Map application started!</div>
+  return <MapComponent />
 }
 
 export default App
