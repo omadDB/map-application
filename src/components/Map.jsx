@@ -26,8 +26,6 @@ function MapComponent() {
   const mapRefInstance = useRef(null)
 
   useEffect(() => {
-    // setCoordinates(mockData.coordinates)
-
     if (!mapRef.current) return
 
     // Creating a map using OpenStreetMap as a source
@@ -74,6 +72,7 @@ function MapComponent() {
                 )}`,
               }),
               text: new Style({
+                text: "",
                 cursor: "pointer",
               }),
             })
@@ -98,6 +97,7 @@ function MapComponent() {
     return () => map.setTarget(null)
   }, [coordinates])
 
+  // Updating coordinates after saving changes in the marker content
   function updateCoordinate(updatedCoordinate) {
     setCoordinates((prev) => {
       const newCoord = prev.map((coord) =>
@@ -141,18 +141,23 @@ function MapComponent() {
   }
 
   return (
-    <div
-      ref={mapRef}
-      className="relative w-full h-screen"
-      onPointerMove={handlePointerMove}
-      onClick={handleClick}
-    >
-      <Modal
-        isModalOpen={isModalOpen}
-        selectedMarker={selectedMarker}
-        setIsModalOpen={setIsModalOpen}
-        updateCoordinate={updateCoordinate}
-      />
+    <div className="relative w-full h-screen">
+      <div
+        // Here, pointer-events-none custom class is used to prevent the work of onPointerMove outside of modal when modal is open. It means that, when I hover or click on the markers when a modal is open, it just closes the modal triggering useOutsideClick() hook.
+        className={`w-full h-full ${isModalOpen ? "pointer-events-none" : ""}`}
+        ref={mapRef}
+        onPointerMove={handlePointerMove}
+        onClick={handleClick}
+      ></div>
+
+      {isModalOpen && (
+        <Modal
+          isModalOpen={isModalOpen}
+          selectedMarker={selectedMarker}
+          setIsModalOpen={setIsModalOpen}
+          updateCoordinate={updateCoordinate}
+        />
+      )}
     </div>
   )
 }
