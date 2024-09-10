@@ -71,10 +71,6 @@ function MapComponent() {
                   createSVGIcon(color)
                 )}`,
               }),
-              text: new Style({
-                text: "",
-                cursor: "pointer",
-              }),
             })
           )
 
