@@ -11,6 +11,7 @@ import Style from "ol/style/Style"
 import Icon from "ol/style/Icon"
 import { isEmpty } from "ol/extent"
 import Modal from "./Modal"
+import { useLocalStorageState } from "../hooks/useLocalStorageState"
 
 const createSVGIcon = (color) => {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="${color}">
@@ -19,7 +20,10 @@ const createSVGIcon = (color) => {
 }
 
 function MapComponent() {
-  const [coordinates, setCoordinates] = useState(mockData.coordinates)
+  const [coordinates, setCoordinates] = useLocalStorageState(
+    mockData.coordinates,
+    "coordinates"
+  )
   const [selectedMarker, setSelectedMarker] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const mapRef = useRef(null)
@@ -144,6 +148,7 @@ function MapComponent() {
         ref={mapRef}
         onPointerMove={handlePointerMove}
         onClick={handleClick}
+        data-test="map"
       ></div>
 
       {isModalOpen && (

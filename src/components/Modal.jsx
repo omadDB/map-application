@@ -40,6 +40,7 @@ function Modal({
         <div
           className="flex flex-col gap-6 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[35rem] bg-white rounded-2xl p-8"
           ref={ref}
+          data-test="modal"
         >
           <div className="flex justify-between">
             <h3 className="text-4xl font-bold">Info</h3>
