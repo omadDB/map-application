@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import { useOutsideClick } from "../hooks/useOutsideClick"
+import Select from "./Select"
+import Textarea from "./Textarea"
 
 function Modal({
   isModalOpen,
@@ -13,7 +15,6 @@ function Modal({
 
   useEffect(() => {
     if (selectedMarker) {
-      console.log(selectedMarker)
       setMarkerStatus(selectedMarker?.status || false)
       setDetails(selectedMarker?.details || "")
     }
@@ -60,40 +61,12 @@ function Modal({
             </button>
           </div>
 
-          <div className="flex items-center gap-9">
-            <label
-              htmlFor="status"
-              className="pl-5 text-xl font-medium leading-none text-right"
-            >
-              Status
-            </label>
-            <select
-              name="status"
-              id="status"
-              value={markerStatus ? "true" : "false"}
-              onChange={(e) => setMarkerStatus(e.target.value === "true")}
-              className="flex items-center w-[20%] pt-1 pb-1.5 pr-3 pl-1.5 text-xl border border-gray-200 shadow-sm rounded-md focus:outline-none"
-            >
-              <option value="true">true</option>
-              <option value="false">false</option>
-            </select>
-          </div>
+          <Select
+            markerStatus={markerStatus}
+            setMarkerStatus={setMarkerStatus}
+          />
 
-          <div className="flex items-center gap-8">
-            <label
-              htmlFor="details"
-              className="pl-[11px] text-xl font-medium leading-none text-right"
-            >
-              Details
-            </label>
-            <textarea
-              name="details"
-              id="details"
-              className="w-full p-3 text-xl text-black border border-gray-200 rounded-md focus:outline-none"
-              value={details}
-              onChange={(e) => setDetails(e.target.value)}
-            ></textarea>
-          </div>
+          <Textarea details={details} setDetails={setDetails} />
 
           <button
             className="flex items-center self-end px-4 py-3 text-sm font-medium text-white bg-black rounded-md shadow whitespace-nowrap disabled:opacity-50"

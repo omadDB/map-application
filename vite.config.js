@@ -7,7 +7,14 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.svg", "favicon.ico", "apple-touch-icon.png", "android-chrome-512x512.png", "android-chrome-192x192.png"],
+      includeAssets: [
+        "favicon.svg",
+        "public/favicon.ico",
+        "favicon.ico",
+        "apple-touch-icon.png",
+        "android-chrome-512x512.png",
+        "android-chrome-192x192.png",
+      ],
       manifest: {
         name: "Map Application",
         short_name: "Map",
