@@ -39,12 +39,12 @@ function Modal({
     isModalOpen && (
       <div className="fixed top-0 left-0 z-1000 w-full h-screen backdrop-blur-sm bg-[#ffffff01]">
         <div
-          className="flex flex-col gap-6 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[35rem] bg-white rounded-2xl p-8"
+          className="flex flex-col gap-6 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] w-[26rem] sm:w-[35rem] bg-white rounded-2xl sm:p-8 p-6"
           ref={ref}
           data-test="modal"
         >
           <div className="flex justify-between">
-            <h3 className="text-4xl font-bold">Info</h3>
+            <h3 className="text-3xl font-bold sm:text-4xl">Info</h3>
             <button onClick={onCloseModal} className="ml-auto">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

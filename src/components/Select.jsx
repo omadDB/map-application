@@ -14,7 +14,7 @@ function Select({ markerStatus, setMarkerStatus }) {
         id="status"
         value={markerStatus ? "true" : "false"}
         onChange={(e) => setMarkerStatus(e.target.value === "true")}
-        className="flex items-center w-[20%] pt-1 pb-1.5 pr-3 pl-1.5 text-xl border border-gray-200 shadow-sm rounded-md focus:outline-none"
+        className="flex items-center w-[40%] sm:w-[20%] pt-1 pb-1.5 pr-3 pl-1.5 text-xl border border-gray-200 shadow-sm rounded-md focus:outline-none"
       >
         <option value="true">true</option>
         <option value="false">false</option>
